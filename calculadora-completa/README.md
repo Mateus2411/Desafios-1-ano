@@ -1,6 +1,6 @@
 # 💻 Calculadora Complexa
 
-Uma **calculadora moderna** inspirada na **do Windows 11**, responsiva, com design limpo e suporte a múltiplos idiomas. Ideal para quem quer **praticidade e funcionalidades básicas** em um só lugar.
+Uma **calculadora moderna** inspirada na **do Windows 11**, responsiva, com design limpo e suporte a múltiplos idiomas. Ideal para quem quer **praticidade e funcionalidades básicas** em um só lugar. 
 
 ---
 
