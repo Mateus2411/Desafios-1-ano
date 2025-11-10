@@ -1,312 +1,97 @@
-/* ============================================
-   VARIÁVEIS GLOBAIS - Padrão para todos os modos
-   ============================================ */
-:root {
-    --cor-fundo-escuro: #0a0a0a;
-    --cor-calculadora: #1a1a1a;
-    --cor-botao: #2d2d2d;
-    --cor-botao-hover: #3a3a3a;
-    --cor-botao-active: #444444;
-    --cor-texto-claro: #e0e0e0;
-    --cor-texto-branco: #ffffff;
-    --cor-borda: #2d2d2d;
-    --cor-igual: #c55a3a;
-    --cor-igual-hover: #d46949;
-    --cor-igual-active: #b54a2a;
-    --cor-overlay: rgba(0, 0, 0, 0.7);
-    --cor-menu: #252525;
-    --cor-menu-opcao-hover: #2d2d2d;
-    --cor-menu-opcao-ativo: #3a3a3a;
-    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* ============================================
-   ESTILOS GLOBAIS - Base para todos os modos
-   ============================================ */
+/* Base */
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--cor-fundo-escuro);
-    font-family: var(--fonte-principal);
-    position: relative;
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* ============================================
-   MODO: MENU LATERAL
-   ============================================ */
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--cor-overlay);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 998;
-}
-
-.menu-overlay.ativo {
-    opacity: 1;
-    visibility: visible;
-}
-
-.menu-lateral {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50%;
-    max-width: 180px;
-    height: 100%;
-    background-color: var(--cor-menu);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 999;
-    overflow-y: auto;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.menu-lateral.aberto {
-    transform: translateX(0);
-}
-
-.menu-secao {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--cor-borda);
-}
-
-.menu-secao:first-child {
-    padding-top: 60px;
-}
-
-.menu-titulo {
-    color: var(--cor-texto-claro);
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 8px 20px;
-    letter-spacing: 1px;
-    opacity: 0.7;
-}
-
-.menu-opcao {
-    padding: 12px 20px;
-    color: var(--cor-texto-claro);
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    display: flex;
-    align-items: center;
-}
-
-.menu-opcao:hover {
-    background-color: var(--cor-menu-opcao-hover);
-}
-
-.menu-opcao.ativo {
-    background-color: var(--cor-menu-opcao-ativo);
-    color: var(--cor-texto-branco);
-}
-
-.menu-opcao-texto {
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.menu-opcao-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-}
-
-.menu-opcao-icon svg {
-    width: 100%;
-    height: 100%;
-    color: inherit;
-}
-
-/* ============================================
-   MODO: CALCULADORA (Padrão)
-   ============================================ */
+/* Container principal */
 .calculadora {
-    background-color: var(--cor-calculadora);
-    border-radius: 0;
-    padding: 0;
-    width: 360px;
-    box-sizing: border-box;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    transition: opacity 0.3s ease, filter 0.3s ease;
-    position: relative;
-    z-index: 1;
+  width: 360px;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  overflow: hidden;
+  padding: 10px 16px 20px;
 }
 
-.calculadora.escurecida {
-    opacity: 0.5;
-    filter: brightness(0.6);
-    pointer-events: none;
-}
-
-/* ============================================
-   MODO: CABEÇALHO
-   ============================================ */
+/* Cabeçalho */
 .cabecalho {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    background-color: var(--cor-calculadora);
-    border-bottom: 1px solid var(--cor-borda);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  color: #f1f1f1;
 }
+.titulo { font-size: 18px; font-weight: 600; }
+.icon-btn { background: transparent; color: #fff; border: none; font-size: 20px; cursor: pointer; }
 
-.icon-btn {
-    background: none;
-    border: none;
-    color: var(--cor-texto-claro);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-    min-height: auto;
-    width: auto;
-}
+/* Menu lateral e overlay */
+.menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: none; }
+.menu-overlay.ativo { display: block; }
+.menu-lateral { position: fixed; top: 0; left: 0; height: 100vh; width: 240px; background: #181818; padding: 14px; box-shadow: 3px 0 12px rgba(0,0,0,0.4); transform: translateX(-100%); transition: transform 0.2s ease; }
+.menu-lateral.aberto { transform: translateX(0); }
+.menu-titulo { font-weight: 600; margin-bottom: 8px; color: #b0b0b0; }
+.menu-opcao { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; color: #ddd; cursor: pointer; }
+.menu-opcao:hover { background: #222; }
+.menu-opcao.ativo { background: #2a2a2a; }
+.menu-opcao-texto { font-size: 14px; }
+.icon-funcao { display: inline-flex; align-items: center; justify-content: center; width: 1rem; height: 1rem; }
+.icon-funcao svg { width: 100%; height: 100%; }
 
-.icon-btn:hover {
-    background-color: var(--cor-botao);
-    opacity: 1;
-}
-
-.titulo {
-    color: var(--cor-texto-claro);
-    font-size: 14px;
-    font-weight: 400;
-    flex: 1;
-    margin-left: 8px;
-}
-
-/* ============================================
-   MODO: DISPLAY
-   ============================================ */
-.display-container {
-    padding: 20px 16px;
-    background-color: var(--cor-calculadora);
-}
-
+/* Display */
+.display-container { margin: 8px 0 10px; }
 .display {
-    background-color: var(--cor-calculadora);
-    color: var(--cor-texto-branco);
-    font-size: 56px;
-    text-align: right;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    border: none;
-    outline: none;
-    font-weight: 300;
-    box-sizing: border-box;
-    line-height: 1.2;
-    min-height: 70px;
-    display: block;
-    caret-color: var(--cor-texto-branco);
-    cursor: text;
+  width: 100%;
+  font-size: 48px;
+  background: transparent;
+  color: #fff;
+  text-align: right;
+  border: none;
+  outline: none;
+  margin: 0 0 10px 0;
+  padding: 6px 0;
+  caret-color: #fff;
 }
 
-.display.calculando {
-    color: #6b9bd1;
-    font-weight: 500;
-    font-size: 18px;
-}
+/* Memória */
+.memory-buttons { display: flex; gap: 12px; color: #b0b0b0; font-size: 14px; margin: 4px 0 8px; }
+.memory-btn { background: transparent; border: none; color: #b0b0b0; cursor: pointer; padding: 4px 0; }
+.memory-btn:hover { color: #e0e0e0; }
 
-.display.erro {
-    color: #d66;
-    font-weight: 500;
-    font-size: 18px;
-}
+/* Ajustes de seções científicas */
+.secao-cientifica { display: none; justify-content: space-between; align-items: center; color: #b0b0b0; padding: 6px 0; }
+.secao-cientifica .grupo { display: flex; gap: 6px; }
+.secao-btn { background: #2a2a2a; border: none; border-radius: 6px; color: #ccc; padding: 6px 10px; cursor: pointer; font-size: 13px; }
+.sub-opcoes { display: flex; gap: 10px; }
 
-/* ============================================
-   MODO: BOTÕES
-   ============================================ */
-.botoes {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    padding: 4px;
-    background-color: var(--cor-calculadora);
-}
+/* Grades de botões */
+.botoes { display: grid; gap: 6px; }
+.botoes-padrao { grid-template-columns: repeat(4, 1fr); }
+.botoes-cientifica { grid-template-columns: repeat(5, 1fr); display: none; }
 
-button {
-    border: none;
-    padding: 20px 12px;
-    font-size: 20px;
-    border-radius: 0;
-    cursor: pointer;
-    transition: background-color 0.15s;
-    font-weight: 400;
-    background-color: var(--cor-botao);
-    color: var(--cor-texto-branco);
-    font-family: var(--fonte-principal);
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    -webkit-user-select: none;
-}
+/* Alternância de modo */
+.modo-padrao .botoes-padrao { display: grid; }
+.modo-padrao .botoes-cientifica { display: none; }
+.modo-padrao .secao-cientifica { display: none; }
+.modo-cientifica .botoes-padrao { display: none; }
+.modo-cientifica .botoes-cientifica { display: grid; }
+.modo-cientifica .secao-cientifica { display: flex; }
 
-button:hover {
-    background-color: var(--cor-botao-hover);
-    opacity: 1;
-}
+/* Botões */
+button { height: 55px; border: none; border-radius: 6px; font-size: 18px; cursor: pointer; color: #fff; background-color: #2b2b2b; transition: background 0.15s; }
+button:hover { background-color: #3b3b3b; }
+.operacao { background-color: #3a3a3a; }
+.funcao { background-color: #2d2d2d; color: #9cc9ff; }
+.igual { background-color: #f57c00; color: #fff; font-weight: bold; }
 
-button:active {
-    background-color: var(--cor-botao-active);
-    opacity: 1;
-}
-
-.funcao {
-    background-color: var(--cor-botao);
-    color: var(--cor-texto-branco);
-    font-weight: 400;
-}
-
-.numero {
-    background-color: var(--cor-botao);
-    color: var(--cor-texto-branco);
-}
-
-.operacao {
-    background-color: var(--cor-botao);
-    color: var(--cor-texto-branco);
-    font-weight: 400;
-}
-
-.operacao.igual {
-    background-color: var(--cor-igual);
-    color: var(--cor-texto-branco);
-    font-weight: 500;
-}
-
-.operacao.igual:hover {
-    background-color: var(--cor-igual-hover);
-}
-
-.operacao.igual:active {
-    background-color: var(--cor-igual-active);
-}
-
-#apagar {
-    font-size: 18px;
-}
-
-/* ============================================
-   MODO: CONVERSOR (Futuro - Moeda)
-   ============================================ */
-/* Estilos para o modo conversor serão adicionados aqui quando implementado */
+/* Estados visuais do display */
+.display.erro { color: #ff4444; animation: erroFlash 0.3s alternate 3; }
+.display.calculando { color: #9e9e9e; font-style: italic; }
+@keyframes erroFlash { from { background: #1e1e1e; } to { background: #551111; } }
