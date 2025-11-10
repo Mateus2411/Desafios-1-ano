@@ -59,7 +59,9 @@ Espero que algo deste projeto te inspire também. 🙌
 
 ## Pastas referentes
 - [Calculadora Em Idiomas Diferentes](calc-simples-Idiomas)
+<br>
 - [Lista de Tarefas](Lista-De-Tarefas)
+<br>
 - [Calculadora Complexa](calculadora-completa)
 
 🧑‍💻 **Autor:** Mateus  
